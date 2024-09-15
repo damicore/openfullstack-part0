@@ -4,8 +4,8 @@ sequenceDiagram
     participant server
     
     browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note
-    Note right of browser: Browser sends the post through a form.
     activate server
+    Note right of browser: Browser sends the post through a form.
     server->>browser: Status code 302 redirect
     deactivate server
     Note right of browser: thanks to the 302 status response with 'location: /notes' in it's header, the browser is told to fetch the notes page again
