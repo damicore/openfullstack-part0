@@ -3,14 +3,7 @@ sequenceDiagram
     participant browser
     participant server
     
-    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note
-    Note right of browser: Browser sends the post through a form.
-    activate server
-    server->>browser: Status code 302 redirect
-    deactivate server
-    Note right of browser: thanks to the 302 status response with 'location: /notes' in it's header, the browser is told to fetch the notes page again
-
-     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/spa
     activate server
     server-->>browser: HTML document
     deactivate server
@@ -20,7 +13,7 @@ sequenceDiagram
     server-->>browser: the css file
     deactivate server
 
-    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.js
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/spa.js
     activate server
     server-->>browser: the JavaScript file
     deactivate server
@@ -32,6 +25,5 @@ sequenceDiagram
     server-->>browser: [{ "content": "HTML is easy", "date": "2023-1-1" }, ... ]
     deactivate server
 
-    Note right of browser: The browser executes the callback function that renders the notes
-
+    Note right of browser: The browser renders the notes
 ```
